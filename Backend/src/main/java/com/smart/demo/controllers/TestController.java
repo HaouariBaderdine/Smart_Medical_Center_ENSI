@@ -6,24 +6,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
+	
 	@GetMapping("/all")
 	public String allAccess() {
 		return "Public Content.";
 	}
 
 	@GetMapping("/user")
-	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') or hasRole('CLIENT') or hasRole('ADMIN')")
 	public String userAccess() {
 		return "User Content.";
 	}
 
 	@GetMapping("/client")
 	@PreAuthorize("hasRole('CLIENT')")
-	public String moderatorAccess() {
+	public String clientAccess() {
 		return "Client Board.";
 	}
 

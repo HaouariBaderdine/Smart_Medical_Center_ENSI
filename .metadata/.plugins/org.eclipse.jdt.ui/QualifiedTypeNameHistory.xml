@@ -21,4 +21,5 @@
     <fullyQualifiedTypeName name="com.smart.demo.security.jwt.AuthEntryPointJwt"/>
     <fullyQualifiedTypeName name="com.smart.demo.security.jwt.AuthTokenFilter"/>
     <fullyQualifiedTypeName name="com.smart.demo.security.services.UserDetailsServiceImpl"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"/>
 </qualifiedTypeNameHistroy>

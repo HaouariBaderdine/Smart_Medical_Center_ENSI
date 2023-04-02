@@ -34,7 +34,7 @@ import com.smart.demo.repository.UserRepository;
 import com.smart.demo.security.jwt.JwtUtils;
 import com.smart.demo.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
