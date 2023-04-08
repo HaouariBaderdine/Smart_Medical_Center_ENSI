@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UsernameNotFoundException"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="com.smart.demo.repository.UserRepository"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
@@ -22,4 +21,9 @@
     <fullyQualifiedTypeName name="com.smart.demo.security.jwt.AuthTokenFilter"/>
     <fullyQualifiedTypeName name="com.smart.demo.security.services.UserDetailsServiceImpl"/>
     <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.smart.backend.models.ERole"/>
 </qualifiedTypeNameHistroy>

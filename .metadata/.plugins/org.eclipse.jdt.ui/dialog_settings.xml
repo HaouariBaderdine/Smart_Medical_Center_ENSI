@@ -36,4 +36,7 @@
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="4"/>
 	</section>
+	<section name="SelfEncapsulateFieldWizard">
+		<item key="GenerateJavadoc" value="false"/>
+	</section>
 </section>
