@@ -4112,3 +4112,58 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.smart:Bac
 2023-04-08 00:58:20,194 [Worker-46: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-04-08 00:58:20,194 [Worker-46: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-04-08 00:58:20,194 [Worker-46: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 01:33:32,083 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-08 02:03:29,349 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:03:29,399 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:03:29,403 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:03:29,418 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:03:29,429 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:03:29,429 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:03:29,429 [Worker-16: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:10:41,105 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:10:41,106 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:10:41,113 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:10:41,119 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:10:41,123 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:10:41,123 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:10:41,123 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:11:56,526 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:11:56,526 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:11:56,528 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:11:56,537 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:11:56,541 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:11:56,541 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:11:56,541 [Worker-21: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:13:28,043 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:13:28,043 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:13:28,045 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:13:28,057 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:13:28,062 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:13:28,062 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:13:28,062 [Worker-23: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:16:21,843 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:16:21,843 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:16:21,844 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:16:21,849 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:16:21,852 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:16:21,852 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:16:21,852 [Worker-25: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:30:28,976 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:30:28,977 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:30:28,978 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:30:28,988 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:30:28,993 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:30:28,993 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:30:28,994 [Worker-28: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:33:39,821 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:33:39,821 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:33:39,822 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:33:39,832 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:33:39,836 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:33:39,836 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:33:39,837 [Worker-31: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-08 02:34:44,411 [Worker-29: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-08 02:34:44,411 [Worker-29: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-08 02:34:44,412 [Worker-29: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:34:44,422 [Worker-29: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-08 02:34:44,429 [Worker-29: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
