@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smart.backend.models.Reponse_Advice;
 import com.smart.backend.repository.ReponseAdviceRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("/api")
 public class ReponseAdviceController {

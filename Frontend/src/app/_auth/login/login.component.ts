@@ -8,13 +8,17 @@ import { StorageService } from '../../_services/storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
   form: any = {
-    username: null,
-    password: null
+    username: "",
+    password: ""
   };
+  
+  fieldTextType: boolean= false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  
   roles: string[] = [];
 
   constructor(private authService: AuthService, private storageService: StorageService) { }
@@ -43,6 +47,11 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     });
+    
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   reloadPage(): void {

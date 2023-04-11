@@ -1,0 +1,161 @@
+<div class="b-example-divider"></div>
+
+<main class="d-flex flex-nowrap">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-5" style="text-align: center;">Tableau de board patient</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/board/patient " [routerLink]="['/board/patient']" class="nav-link link-body-emphasis">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="/medecins " [routerLink]="['/medecins']" class="nav-link link-body-emphasis">
+                    Medecins à approximté
+                </a>
+            </li>
+            <li>
+                <a href="/advices " [routerLink]="['/advices']" class="nav-link link-body-emphasis" routerLinkActive="router-link-active" class="nav-link active" aria-current="page">
+                    <span>Demander conseil</span>
+                </a>
+            </li>
+            <li>
+                <a href="/reclamations " [routerLink]="['/reclamations']" class="nav-link link-body-emphasis">
+                    <span>Donner réclamation</span>
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+
+    <section class="right">
+
+        <ng-container *appSpinner="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container class="container" *ngIf="!loading">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class=" titre d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="h4 mb-0 text-gray-800">Liste des conseils :</h3>
+                </div>
+                <hr/>
+            </div>
+
+            <div class="row" *ngIf="conseils.length != 0">
+                <!-- Content Column -->
+                <div class="col-lg-7 mb-4">
+
+                    <div class="card  mb-4">
+
+                        <div class="card-body">
+                            <div class="card list shadow" *ngFor="let conseil of conseils ; let i = index">
+                                <div class="card-header">
+                                    Conseil n° {{i+1}} <small>(demandé le {{conseil.createdAt | date}})</small>
+                                    <ng-container *ngIf="conseil.etat == 'en cours'">
+                                        <strong class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" style="float: right;">
+                                            {{conseil.etat}}
+                                        </strong>
+                                    </ng-container>
+                                    <ng-container *ngIf="conseil.etat == 'traité'">
+                                        <strong class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill" style="float: right;">
+                                            {{conseil.etat}}
+                                        </strong>
+                                    </ng-container>
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p><strong>Sujet: </strong> {{conseil.type}}.</p>
+                                        <P>
+                                            <strong>Description : </strong>{{conseil.description}}
+                                        </P>
+                                    </blockquote>
+                                    <hr/>
+                                    <ng-container *ngIf="conseil.etat == 'traité'">
+                                        <button class="btn btn-outline-primary">Consulter réponse</button>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="conseil.etat != 'traité'">
+                                        <button class="btn btn-outline-danger" (click)="deleteConseil(conseil.id)"><i class="bi bi-trash3-fill"></i> Supprimer</button>
+                                    </ng-container>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- post -->
+
+                <div class="col-lg-5 mb-4">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Demander conseil</h6>
+                        </div>
+                        <div class="card-body">
+                            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" name="form" class="row g-3 needs-validation">
+
+                                <div class="col-md-12 ">
+                                    <label for="sujet " class="form-label ">Sujet: *</label>
+                                    <input type="text " required placeholder="Saisir le sujet " [(ngModel)]=" form.sujet " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f.submitted && sujet.errors }" #sujet="ngModel" class="form-control " id="sujet " name="sujet ">
+                                    <div *ngIf="f.submitted && sujet.errors" class="invalid-feedback">
+                                        <div *ngIf="sujet.errors['required']">Le sujet est obligatoire !</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 ">
+                                    <label for="description " class="form-label ">Description: *</label>
+                                    <textarea class="form-control" rows="5" placeholder="Description ....." required [(ngModel)]=" form.description " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f.submitted && description.errors }" #description="ngModel" class="form-control "
+                                        id="description " name="description "></textarea>
+                                    <div *ngIf="f.submitted && description.errors" class="invalid-feedback">
+                                        <div *ngIf="description.errors['required']">La description est obligatoire !</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 ">
+                                    <small>(*) : sont obligatoires !</small>
+                                </div>
+
+                                <div class="modal-footer ">
+                                    <button type="button" style="margin-right: 10px;" (click)="onReset(f)" class="btn btn-outline-warning">
+                                        Réinitialiser
+                                    </button>
+                                    <button type="submit " class="btn btn-primary ">
+                                        Envoyer
+                                    </button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </ng-container>
+    </section>
+</main>
+
+<script>
+    /* global bootstrap: false */
+    (() => {
+        'use strict'
+        const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.forEach(tooltipTriggerEl => {
+            new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    })()
+</script>

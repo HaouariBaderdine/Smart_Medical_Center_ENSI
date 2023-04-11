@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<div class="b-example-divider"></div>
+
+<main class="d-flex flex-nowrap">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-5" style="text-align: center;">Tableau de board medecin</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/board/medecin " [routerLink]="['/board/medecin']" class="nav-link link-body-emphasis">
+                    Tableau de board
+                </a>
+            </li>
+            <li>
+                <a href="/cabinet " [routerLink]="['/cabinet']" routerLinkActive="router-link-active" class="nav-link active" aria-current="page">
+                    Information cabinet
+                </a>
+            </li>
+            <li>
+                <a href="/conseils " [routerLink]="['/conseils']" class="nav-link link-body-emphasis">
+                    <span>Répondre conseil</span>
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+
+    <!-- partie right-->
+
+    <section class="right">
+
+        <ng-container *appSpinner="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container class="container" *ngIf="!loading">
+
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class=" titre d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="h4 mb-0 text-gray-800">Informatin cabinet :</h3>
+                    <button *ngIf="cabinet==null" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-outline-primary">Ajouter cabinet</button>
+                </div>
+            </div>
+            <ng-container *ngIf="cabinet == null">
+                <p class="found"> Il faut d'abord ajouter un cabinet, pour voir plus d'infos.</p>
+            </ng-container>
+
+            <ng-container *ngIf="cabinet != null">
+                <div class="detail">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="project-info-box mt-0">
+                                <h5>Description</h5>
+                                <p style="height: 100px;" class="mb-0">{{cabinet.description}}</p>
+                            </div>
+                            <!-- / project-info-box -->
+
+                            <div class="project-info-box">
+                                <p><b>Adress:</b>{{cabinet.address}}</p>
+                                <p><b>Date d'ouvert:</b>{{cabinet.open}} H</p>
+                                <p><b>Date de fermeture:</b>{{cabinet.close}} H</p>
+                            </div>
+                            <!-- / project-info-box -->
+                        </div>
+                        <!-- / column -->
+
+                        <div class="col-md-7">
+                            <div class="map-responsive">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d106094.13251017848!2d10.7987351!3d33.8009143!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aaa4e5e0b6c09d%3A0xb999de29df953b8a!2sLyc%C3%A9e%20Ibn%20Arafa!5e0!3m2!1sfr!2stn!4v1676281942505!5m2!1sfr!2stn"
+                                    width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
+                        </div>
+                        <!-- / column -->
+                    </div>
+                </div>
+            </ng-container>
+
+
+        </ng-container>
+    </section>
+</main>
+
+<script>
+    /* global bootstrap: false */
+    (() => {
+        'use strict'
+        const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.forEach(tooltipTriggerEl => {
+            new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    })()
+</script>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ajouter cabinet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="clear()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" name="form" class="row g-3 needs-validation">
+
+                        <div class="col-md-12 ">
+                            <label for="address " class="form-label ">address: *</label>
+                            <input type="text " required placeholder="Saisir l'adresse " [(ngModel)]=" form.address " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f.submitted && address.errors }" #address="ngModel" class="form-control " id="address " name="address ">
+                            <div *ngIf="f.submitted && address.errors" class="invalid-feedback">
+                                <div *ngIf="address.errors['required']">L'adresse est obligatoire !</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <label for="open " class="form-label ">Date d'ouverture: </label>
+                            <input type="number " required [(ngModel)]=" form.open " [ngModelOptions]="{standalone: true} " #open="ngModel" class="form-control " id="open " name="open ">
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <label for="close " class="form-label ">Date de dermeture: </label>
+                            <input type="number " required [(ngModel)]=" form.close " [ngModelOptions]="{standalone: true} " #close="ngModel" class="form-control " id="close " name="close ">
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <label for="description " class="form-label ">Description: *</label>
+                            <textarea class="form-control" rows="5" placeholder="Description ....." required [(ngModel)]=" form.description " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f.submitted && description.errors }" #description="ngModel" class="form-control "
+                                id="description " name="description "></textarea>
+                            <div *ngIf="f.submitted && description.errors" class="invalid-feedback">
+                                <div *ngIf="description.errors['required']">La description est obligatoire !</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <small>(*) : sont obligatoires !</small>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" (click)="onReset(f)" class="btn btn-outline-warning">
+                                Reset
+                            </button>
+                            <button type="submit " class="btn btn-primary ">
+                                Envoyer
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

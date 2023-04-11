@@ -1,0 +1,161 @@
+<div class="b-example-divider">
+</div>
+
+<main class="d-flex flex-nowrap">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-5" style="text-align: center;">Tableau de board patient</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/board/patient " [routerLink]="['/board/patient']" class="nav-link link-body-emphasis">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="/medecins " [routerLink]="['/medecins']" routerLinkActive="router-link-active" class="nav-link active" aria-current="page">
+                    Medecins à approximté
+                </a>
+            </li>
+            <li>
+                <a href="/advices " [routerLink]="['/advices']" class="nav-link link-body-emphasis">
+                    <span>Demander conseil</span>
+                </a>
+            </li>
+            <li>
+                <a href="/reclamations " [routerLink]="['/reclamations']" class="nav-link link-body-emphasis">
+                    <span>Donner réclamation</span>
+                </a>
+            </li>
+        </ul>
+        <hr>
+
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+    <!-- partie right-->
+
+    <section class=" right">
+
+        <ng-container *appSpinner="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container class="container" *ngIf="!loading">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class=" titre d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="h4 mb-0 text-gray-800">Liste des médecins <small>{{specialiteE}}</small> de <small>{{addressE}}</small> :</h3>
+                </div>
+            </div>
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-6">
+
+                <div class="haut col-md-3" style="margin-left: 10%;">
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="nameE" id="SearcNom" placeholder="Nom ou prénom de medecin ..." />
+                    </div>
+                </div>
+
+                <div class="haut col-md-3">
+                    <div class="input-group mb-4">
+                        <select class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="addressE" list="datalistOptions1" id="SearchProvince">
+                            <option selected>Choisir province</option>
+                            <option [value]="province" *ngFor="let province of provinces">
+                                {{province}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="haut col-md-3" style="margin-right: 10%;">
+                    <div class="input-group mb-4">
+                        <select class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="specialiteE" list="datalistOptions2" id="SearchSpec">
+                            <option>Choisir specialite</option>
+                            <option [value]="specialite" *ngFor="let specialite of specialites">
+                                {{specialite}}
+                            </option>
+                          </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="medecins.length != ''">
+                <div class="col" *ngFor="let medecin of medecins | userAddress: addressE | userSpecialte: specialiteE  | userName: nameE ; ;
+                let i = index">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <small class="text-body-secondary">{{medecin.specialite}}</small>
+                        </div>
+                        <ng-container *ngIf="medecin.gender == 'homme'">
+                            <img class="img-account-profile rounded-circle mb-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Man_Silhouette.png/220px-Man_Silhouette.png" class="card-img-top" alt="">
+                        </ng-container>
+                        <ng-container *ngIf="medecin.gender == 'femme'">
+                            <img class="img-account-profile rounded-circle mb-2" src="../../../../../assets/femme.png" class="card-img-top" alt="">
+                        </ng-container>
+                        <div class="card-body">
+                            <h5 class="card-title">{{medecin.name}}
+                                <small class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">{{medecin.age}} Ans</small>
+                            </h5>
+                            <p class="card-text">Années d'experience: {{medecin.experience}} <small>Ans</small></p>
+                            <div class="rating">
+                                <ul>
+                                    <li class="star"></li>
+                                    <li class="star"></li>
+                                    <li class="star"></li>
+                                    <li class="star"></li>
+                                    <li class="star"></li>
+                                </ul>
+                            </div>
+                            <hr/>
+                            <button (click)="voirCabinet(medecin.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-outline-primary">
+                                Consulter cabinet
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </ng-container>
+    </section>
+</main>
+
+<script>
+    /* global bootstrap: false */
+    (() => {
+        'use strict'
+        const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.forEach(tooltipTriggerEl => {
+            new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    })()
+</script>
+
+<div class="modal fade modal-lg" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    Information cabinet
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

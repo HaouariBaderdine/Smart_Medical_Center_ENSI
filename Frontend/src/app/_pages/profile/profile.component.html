@@ -1,20 +1,101 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-    <header class="jumbotron">
-        <h3>
-            <strong>{{ currentUser.username }}</strong> Profile
-        </h3>
-    </header>
-    <p>
-        <strong>Email:</strong> {{ currentUser.email }}
-    </p>
-    <strong>Roles:</strong>
-    <ul>
-        <li *ngFor="let role of currentUser.roles">
-            {{ role }}
-        </li>
-    </ul>
-</div>
+<div class="b-example-divider"></div>
 
-<ng-template #loggedOut>
-    Please login.
-</ng-template>
+<div class="container px-4 mt-4 body" *ngIf="currentUser!= null">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="/profile " [routerLink]="['/profile']">Profil</a>
+        <a class="nav-link" href="/securite" [routerLink]="['/securite']">Sécurité</a>
+        <a class="nav-link" href="/avis" [routerLink]="['/avis']">Avis</a>
+    </nav>
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Image de profil</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <ng-container *ngIf="currentUser.gender == 'homme'">
+                        <img class="img-account-profile rounded-circle mb-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Man_Silhouette.png/220px-Man_Silhouette.png" alt="">
+                    </ng-container>
+                    <ng-container *ngIf="currentUser.gender == 'femme'">
+                        <img class="img-account-profile rounded-circle mb-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdqbMmkp4YmQ2tdiNiOtzzqCRIkxDs37z2jg&usqp=CAU" alt="">
+                    </ng-container>
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG ou PNG ne dépassant pas 5 Mo</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn btn-primary" type="button">Télecharger une nouvelle image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Détails du compte <small style="color:rgb(13, 75, 75)">({{currentUser.roles}})</small></div>
+
+                <div class="card-body">
+                    <form>
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputUsername">Carte d'identité</label>
+                                <input class="form-control" disabled id="inputUsername" type="text" placeholder="Entrez votre nom d'utilisateur" value={{currentUser.username}}>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputEmailAddress">E-mail adresse</label>
+                                <input class="form-control" disabled id="inputEmailAddress" type="email" placeholder="Enter your email address" value={{currentUser.email}}>
+                            </div>
+                        </div>
+
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Nom et Prénom</label>
+                                <input class="form-control" disabled id="inputFirstName" type="text" placeholder="Entrez votre prénom" value={{currentUser.name}}> </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Adresse</label>
+                                <input class="form-control" disabled id="inputLocation" type="text" placeholder="Enter your location" value={{currentUser.address}}>
+                            </div>
+                        </div>
+
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputEmailAddress">Genre</label>
+                                <input class="form-control" disabled id="inputEmailAddress" type="text" placeholder="Enter your email address" value={{currentUser.gender}}>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Age</label>
+                                <input class="form-control" disabled id="inputPhone" type="tel" placeholder="Enter your phone number" value={{currentUser.age}}>
+                            </div>
+
+                        </div>
+
+                        <ng-container *ngIf="currentUser.roles == 'ROLE_MEDECIN'">
+                            <hr/>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputUsername">Années d'experience</label>
+                                    <input class="form-control" disabled id="inputExp" type="number" value={{currentUser.experience}}>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputEmailAddress">E-mail adresse</label>
+                                    <input class="form-control" disabled id="inputSpec" type="text" value={{currentUser.specialite}}>
+                                </div>
+                            </div>
+
+                        </ng-container>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Modifier profil</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

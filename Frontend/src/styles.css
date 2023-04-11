@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+p {
+    font-size: 16px;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+
+/*
+  .btn-success{
+    background-color: #a56c48;
+    border-color: #926041;
+  }
+  .btn-success:hover{
+    background-color: #a56c48;
+    border-color: #926041;
+  }
+  
+  
+  .btn-success:active{
+    background-color: #a56c48;
+    border-color: #926041;
+  }
+  
+  .btn-outline-success{
+    border-color: #926041;
+    color: #a56c48;
+  }
+  
+  .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active{
+    background-color: #a56c48;
+    border-color: #926041;
+    color: white;
+  }
+  */

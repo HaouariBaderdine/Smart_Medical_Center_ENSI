@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="/home" class="navbar-brand">
+            <div class="presentation-container ">
+                <div class="col-sm-12 wow fadeInLeftBig" style="visibility: visible; animation-name: fadeInLeftBig;">
+                    <h1>
+                        <span style="color:rgb(38, 29, 142)">HBO</span>Medical
+                    </h1>
+                    <p><img src="../../../assets/logo2.png" height="40px" width="40px" />
+                        <span style="color: #000">
+                            Centre médical intelligent</span></p>
+                </div>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a routerLinkActive="actif" href="/home" class="nav-link" routerLink="home">
+                        Accueil
+                    </a>
+                </li>
+
+                <li class="nav-item" *ngIf="showAdminBoard">
+                    <a href="/admin" class="nav-link" routerLink="admin" routerLinkActive="actif">Tableau de bord</a>
+                </li>
+                <li class="nav-item" *ngIf="showClientBoard">
+                    <a href="board/patient" class="nav-link" routerLink="board/patient" routerLinkActive="actif">Tableau de bord patient</a>
+                </li>
+                <li class="nav-item" *ngIf="showMedecinBoard">
+                    <a href="board/medecin" class="nav-link" routerLink="board/medecin" routerLinkActive="actif">Tableau de bord medecin</a>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+                <li class="nav-item item-login">
+                    <a href="/login">
+                        <button type="button" class="btn btn-outline-primary me-2">Se Connecter</button>
+                    </a>
+                </li>
+                <div class="nav-item item-register">
+                    <a href="/register">
+                        <button type="button" class="btn btn-primary">Créer un compte</button>
+                    </a>
+                </div>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <div class="btn-group dropstart" *ngIf="isLoggedIn">
+                    <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <img src="https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png" alt="" width="30" height="30" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" (click)="logout()">Se déconnecter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="body">
+    <router-outlet></router-outlet>
+</div>

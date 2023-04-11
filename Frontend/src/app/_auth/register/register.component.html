@@ -1,51 +1,362 @@
-<div class="col-md-12">
-    <div class="card card-container">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
-                <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
-                    <div *ngIf="username.errors['required']">Username is required</div>
-                    <div *ngIf="username.errors['minlength']">
-                        Username must be at least 3 characters
+<br/>
+
+<div id="main-wrapper" *ngIf="!isSuccessful" class=" container">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="card border-0">
+                <div class="card-body p-0">
+                    <div class="row no-gutters">
+
+                        <div class="col-lg-6 d-none d-lg-inline-block">
+                            <div class="account-block rounded-right">
+                                <div class="overlay rounded-right"></div>
+                                <div class="account-testimonial">
+                                    <h4 class="text-white mb-4">This beautiful theme yours!</h4>
+                                    <p class="lead text-white">"Best investment i made for a long time. Can only recommend it for other users."</p>
+                                    <p>- Admin User</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="mb-5">
+                                    <h3 class="h4 font-weight-bold text-theme">Inscription</h3>
+                                </div>
+
+                                <h6 class="h5 mb-0">Bienvenu !</h6>
+                                <p class="text-muted mt-2 mb-5">Entrez votre nom d'utilisateur et votre mot de passe pour accéder au panneau d'administration.</p>
+
+                                <div class="form-group ">
+
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-outline-success">S'inscrire comme patient</button>
+                                    <br/>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" class="btn btn-outline-danger" style="margin-left: 50%;">S'inscrire comme medecin</button>
+
+                                </div>
+
+                                <br/>
+                                <hr/>
+
+                                <div class="form-group ">
+                                    Pour plus d'informations<a href="#l" class="forgot-link float-right text-secondary" style="margin-left: 35%;">Nos cantacter !</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
-                    <div *ngIf="username.errors['maxlength']">
-                        Username must be at most 20 characters
-                    </div>
+
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
-                <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
-                    <div *ngIf="email.errors['required']">Email is required</div>
-                    <div *ngIf="email.errors['email']">
-                        Email must be a valid email address
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
-                <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
-                    <div *ngIf="password.errors['required']">Password is required</div>
-                    <div *ngIf="password.errors['minlength']">
-                        Password must be at least 6 characters
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block">Sign Up</button>
+                <!-- end card-body -->
             </div>
 
-            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                Signup failed!<br />{{ errorMessage }}
-            </div>
-        </form>
+            <p class="text-muted text-center mt-3 mb-0">Vous avez un compte?
+                <a href="/login" class="text-primary ml-1">Se connecter</a></p>
 
-        <div class="alert alert-success" *ngIf="isSuccessful">
-            Your registration is successful!
+            <!-- end row -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- Row -->
+</div>
+
+<br/>
+
+<div class="modal fade modal-lg" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">S'inscrire comme patien
+                    <small *ngIf="isSuivant_patient == false" style="font-size: small;">(Etape 1)</small>
+                    <small *ngIf="isSuivant_patient == true" style="font-size: small;">(Etape 2)</small>
+
+                </h5>
+                <button type="button" class="btn-close" (click)="clear(f)" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit_patient()" #f="ngForm" name="form" class="row g-3 needs-validation">
+
+                        <ng-container *ngIf="isSuivant_patient == false">
+
+                            <div class="col-md-6">
+                                <label for="username1" class="form-label">Carte d'identité: *</label>
+                                <input type="number" required pattern="[0-9]{7}" placeholder="Saisir le numéro de CIN" [(ngModel)]="form.username" [ngClass]="{ 'is-invalid': f.submitted && username1.errors }" #username1="ngModel" class=" form-control " id="username1" name="username1 ">
+                                <div *ngIf="f.submitted && username1.errors" class="invalid-feedback">
+                                    <div *ngIf="username1.errors['required']">Cin est obligatoire !</div>
+                                    <div *ngIf="username1.errors['pattern']">
+                                        Veuillez saisir un numéro de CIN valide (8 chiffres).
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email1" class="form-label">E-mail: *</label>
+                                <input type="email" required placeholder="Saisir l'e-mail " [(ngModel)]=" form.email " [ngModelOptions]="{standalone: true} " #email1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email1.errors }" class=" form-control " id="email1 " name="email1 ">
+                                <div *ngIf="f.submitted && email1.errors " class="invalid-feedback ">
+                                    <div *ngIf="email1.errors[ 'required'] ">E-mail est obligatoire</div>
+                                    <div *ngIf="email1.errors[ 'email'] ">E-mail es invalide</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="password" class=" form-labe">Mot de passe: *</label>
+
+                                <input type="password" class="form-control form-control-user " name="password" [(ngModel)]="form.password" required minlength="8" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" id="exampleInputPassword ">
+
+                                <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                                    <div *ngIf="password.errors['required']">Mot de passe requis</div>
+                                    <div *ngIf="password.errors['minlength']">
+                                        Le mot de passe doit être au moins de 8 caractères
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="confirme" class=" form-labe">Confirme mot de passe: *</label>
+
+                                <input type="password" class="form-control form-control-user " name="confirme" [(ngModel)]="form.confirme" required minlength="8" #confirme="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirme.errors }" id="exampleInputPassword1 ">
+
+                                <div *ngIf="confirme.errors && f.submitted" class="invalid-feedback">
+                                    <div *ngIf="confirme.errors['required']">Confirme mot de passe requis</div>
+                                    <div *ngIf="confirme.errors['minlength']">
+                                        Le confirme mot de passe doit être au moins de 8 caractères
+                                    </div>
+                                    <div *ngIf="form.password !== form.confirme">Les mots de passe ne correspondent pas</div>
+                                </div>
+                            </div>
+
+                        </ng-container>
+
+
+                        <ng-container *ngIf="isSuivant_patient == true">
+
+                            <div class="col-md-12 ">
+                                <label for="name1 " class="form-label ">Nom et Prenom: *</label>
+                                <input type="text " required placeholder="Saisir le nom " [(ngModel)]=" form.name " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f.submitted && name1.errors }" #name1="ngModel" class="form-control " id="name1 " name="name1 ">
+                                <div *ngIf="f.submitted && name1.errors" class="invalid-feedback">
+                                    <div *ngIf="name1.errors['required']">Le nom est obligatoire !</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label for="province" class="form-label">Address: *</label>
+                                <select id="province" [(ngModel)]="form.address" [ngModelOptions]="{standalone: true}" class="form-control" required name="province">
+                                <option [value]="w" *ngFor="let w of provinces">{{w}}</option>
+                            </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age: *</label>
+                                <input type="number" required placeholder="Saisir votre age" [(ngModel)]="form.age" [ngClass]="{ 'is-invalid': f.submitted && age.errors }" #age="ngModel" class=" form-control " id="age" name="age ">
+                                <div *ngIf="f.submitted && age.errors" class="invalid-feedback">
+                                    <div *ngIf="age.errors['required']">L'age est obligatoire !</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 ">
+                                <label for="gender " class="form-label ">Genre: *</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <input class="form-check-input" type="radio" value="homme" [(ngModel)]=" form.gender " [ngModelOptions]="{standalone: true} " #gender="ngModel" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Homme
+                            </label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <input class="form-check-input" type="radio" value="femme" [(ngModel)]=" form.gender " [ngModelOptions]="{standalone: true} " #gender="ngModel" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                Femme
+                            </label>
+                            </div>
+
+                        </ng-container>
+
+
+                        <div class="col-md-12 ">
+                            <small>(*) : sont obligatoires !</small>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" (click)="onReset(f)" class="btn btn-outline-secondary">
+                                Reset
+                            </button>
+                            <button type="button " *ngIf="isSuivant_patient == false" (click)="clickSuivant_patient()" [disabled]="form.username == '' || form.email == '' || form.password =='' || form.confirme ==''" class="btn btn-outline-primary ">
+                                Suivant
+                            </button>
+                            <button type="submit " *ngIf="isSuivant_patient == true" [disabled]="form.name == '' || form.age == 0" class="btn btn-primary ">
+                                S'inscrire
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-lg" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">S'inscrire comme medecin
+                    <small *ngIf="isSuivant_medecin == false" style="font-size: small;">(Etape 1)</small>
+                    <small *ngIf="isSuivant_medecin == true" style="font-size: small;">(Etape 2)</small>
+                </h5>
+
+                <button type="button" class="btn-close" (click)="clear(f1)" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form name="form" (ngSubmit)="f1.form.valid && onSubmit_medecin()" #f1="ngForm" name="form" class="row g-3 needs-validation">
+
+                        <ng-container *ngIf="isSuivant_medecin == false">
+
+                            <div class="col-md-6">
+                                <label for="username" class="form-label">Carte d'identité: *</label>
+                                <input type="number" required pattern="[0-9]{7}" placeholder="Saisir le numéro de CIN" [(ngModel)]="form.username" [ngClass]="{ 'is-invalid': f1.submitted && username.errors }" #username="ngModel" class=" form-control " id="username" name="username ">
+                                <div *ngIf="f1.submitted && username.errors" class="invalid-feedback">
+                                    <div *ngIf="username.errors['required']">Cin est obligatoire !</div>
+                                    <div *ngIf="username.errors['pattern']">
+                                        Veuillez saisir un numéro de CIN valide (8 chiffres).
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">E-mail: *</label>
+                                <input type="email" required placeholder="Saisir l'e-mail " [(ngModel)]=" form.email " [ngModelOptions]="{standalone: true} " #email="ngModel" [ngClass]="{ 'is-invalid': f1.submitted && email.errors }" class=" form-control " id="email " name="email ">
+                                <div *ngIf="f1.submitted && email.errors " class="invalid-feedback ">
+                                    <div *ngIf="email.errors[ 'required'] ">E-mail est obligatoire</div>
+                                    <div *ngIf="email.errors[ 'email'] ">E-mail es invalide</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="password1" class=" form-labe">Mot de passe: *</label>
+
+                                <input type="password" class="form-control form-control-user " name="password1" [(ngModel)]="form.password" required minlength="8" #password1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password1.errors }" id="exampleInputPasswordkkk ">
+                                <div *ngIf="password1.errors && f.submitted" class="invalid-feedback">
+                                    <div *ngIf="password1.errors['required']">Mot de passe requis</div>
+                                    <div *ngIf="password1.errors['minlength']">
+                                        Le mot de passe doit être au moins de 8 caractères
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <label for="confirme1" class=" form-labe">Confirme mot de passe: *</label>
+
+                                <input type="password" class="form-control form-control-user " name="confirme1" [(ngModel)]="form.confirme" required minlength="8" #confirme1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirme1.errors }" id="confirme1 ">
+
+                                <div *ngIf="confirme1.errors && f.submitted" class="invalid-feedback">
+                                    <div *ngIf="confirme1.errors['required']">Confirme mot de passe requis</div>
+                                    <div *ngIf="confirme1.errors['minlength']">
+                                        Le confirme mot de passe doit être au moins de 8 caractères
+                                    </div>
+                                    <div *ngIf="form.password !== form.confirme">Les mots de passe ne correspondent pas</div>
+                                </div>
+                            </div>
+
+                        </ng-container>
+
+                        <ng-container *ngIf="isSuivant_medecin == true">
+
+
+                            <div class="col-md-12 ">
+                                <label for="name " class="form-label ">Nom et Prenom: *</label>
+                                <input type="text " required placeholder="Saisir le nom " [(ngModel)]=" form.name " [ngModelOptions]="{standalone: true} " [ngClass]="{ 'is-invalid': f1.submitted && name.errors }" #name="ngModel" class="form-control " id="name " name="name ">
+                                <div *ngIf="f1.submitted && name.errors" class="invalid-feedback">
+                                    <div *ngIf="name.errors['required']">Le nom est obligatoire !</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="province" class="form-label">Address: *</label>
+                                <select id="province" [(ngModel)]="form.address" [ngModelOptions]="{standalone: true}" class="form-control" required name="province">
+                                <option [value]="w" *ngFor="let w of provinces">{{w}}</option>
+                            </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age: *</label>
+                                <input type="number" required placeholder="Saisir votre age" [(ngModel)]="form.age" [ngClass]="{ 'is-invalid': f.submitted && age.errors }" #age="ngModel" class=" form-control " id="age" name="age ">
+                                <div *ngIf="f.submitted && age.errors" class="invalid-feedback">
+                                    <div *ngIf="age.errors['required']">L'age est obligatoire !</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 ">
+                                <label for="gender " class="form-label ">Genre: *</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <input class="form-check-input" type="radio" value="homme" [(ngModel)]=" form.gender " [ngModelOptions]="{standalone: true} " #gender="ngModel" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Homme
+                            </label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <input class="form-check-input" type="radio" value="femme" [(ngModel)]=" form.gender " [ngModelOptions]="{standalone: true} " #gender="ngModel" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                Femme
+                            </label>
+                            </div>
+
+                            <hr/>
+
+                            <div class="col-md-6">
+                                <label for="experiences" class="form-label">Années d'experience: *</label>
+                                <input type="number" required placeholder="Saisir nbr années" [(ngModel)]="form.experience" [ngClass]="{ 'is-invalid': f1.submitted && experiences.errors }" #experiences="ngModel" class=" form-control " id="experiences" name="experiences ">
+                                <div *ngIf="f1.submitted && experiences.errors" class="invalid-feedback">
+                                    <div *ngIf="experiences.errors['required']">Experience est obligatoire !</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label for="specialite" class="form-label">Spécialité: *</label>
+                                <select id="specialite" [(ngModel)]="form.specialite" [ngModelOptions]="{standalone: true}" class="form-control" required name="specialite">
+                                <option [value]="w" *ngFor="let w of specialites">{{w}}</option>
+                            </select>
+                            </div>
+
+
+                        </ng-container>
+
+
+                        <div class="col-md-12 ">
+                            <small>(*) : sont obligatoires !</small>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" (click)="onReset(f1)" class="btn btn-outline-secondary">
+                                Reset
+                            </button>
+                            <button type="button " *ngIf="isSuivant_medecin == false" (click)="clickSuivant_medecin()" [disabled]="form.username == '' || form.email == '' || form.password =='' || form.confirme ==''" class="btn btn-outline-primary ">
+                                Suivant
+                            </button>
+                            <button type="submit " *ngIf="isSuivant_medecin == true" [disabled]="form.name == '' || form.age == 0 || form.experience == 0 || form.specialite ==''" class="btn btn-primary ">
+                                S'inscrire
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </div>

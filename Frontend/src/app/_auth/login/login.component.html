@@ -1,38 +1,92 @@
-<div class="col-md-12">
-    <div class="card card-container">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
-                <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
-                    Username is required!
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
-                <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
-                    <div *ngIf="password.errors['required']">Password is required</div>
-                    <div *ngIf="password.errors['minlength']">
-                        Password must be at least 6 characters
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block">
-            Login
-          </button>
-            </div>
-            <div class="form-group">
-                <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
-                    Login failed: {{ errorMessage }}
-                </div>
-            </div>
-        </form>
+<br/>
 
-        <div class="alert alert-success" *ngIf="isLoggedIn">
-            Logged in as {{ roles }}.
+<div id="main-wrapper" class=" container" *ngIf="!isLoggedIn">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="card border-0">
+                <div class="card-body p-0">
+                    <div class="row no-gutters">
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="mb-5">
+                                    <h3 class="h4 font-weight-bold text-theme">Se connecter</h3>
+                                </div>
+
+                                <h6 class="h5 mb-0">Bienvenu !</h6>
+                                <p class="text-muted mt-2 mb-5">Entrez votre nom d'utilisateur et votre mot de passe pour accéder au panneau d'administration.</p>
+
+                                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                                    <div class="form-group ">
+                                        <label for="username">Nom d'utlisateur: </label>
+
+                                        <input type="text" class="form-control form-control-user " [(ngModel)]="form.username" name="username" [ngModelOptions]="{standalone: true}" id="exampleInputEmail" placeholder="" required #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+                                        />
+
+                                        <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                                            Nom d'utilisateur est nécessaire!
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="password">Mot de passe: *</label>
+
+                                        <input [type]="fieldTextType ? 'text' : 'password'" class="form-control form-control-user " name="password" [(ngModel)]="form.password" required minlength="8" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" id="exampleInputPassword ">
+
+
+                                        <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                                            <div *ngIf="password.errors['required']">Mot de passe requis</div>
+                                            <div *ngIf="password.errors['minlength']">
+                                                Le mot de passe doit être au moins de 8 caractères
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br/>
+
+                                    <button type="submit" class="btn btn-theme">Se connecter</button>
+                                    <a href="#l" class="forgot-link float-right text-primary" style="margin-left: 35%;">Mot de passe oublié ?</a>
+
+                                    <div class="form-group">
+                                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                                            Erreur de se connecter.
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 d-none d-lg-inline-block">
+                            <div class="account-block rounded-right">
+                                <div class="overlay rounded-right"></div>
+                                <div class="account-testimonial">
+                                    <h4 class="text-white mb-4">This beautiful theme yours!</h4>
+                                    <p class="lead text-white">"Best investment i made for a long time. Can only recommend it for other users."</p>
+                                    <p>- Admin User</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+
+            <p class="text-muted text-center mt-3 mb-0">Vous n'avez pas de compte ?
+                <a href="/register" class="text-primary ml-1">S'inscrire</a></p>
+
+            <!-- end row -->
+
         </div>
+        <!-- end col -->
     </div>
+    <!-- Row -->
 </div>
+
+<div id="main-wrapper" class=" container" *ngIf="isLoggedIn">
+    connection {{roles}} avec succés !
+</div>
+
+<br/>

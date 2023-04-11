@@ -25,19 +25,19 @@ export class AuthService {
     );
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register_medecin(data: any): Observable<any> {
     return this.http.post(
-      AUTH_API + 'signup',
-      {
-        username,
-        email,
-        password,
-      },
-      httpOptions
+      AUTH_API + 'signup/medecin',data,httpOptions
+    );
+  }
+
+  register_patient(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'signup/client',data,httpOptions
     );
   }
 
   logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+    return this.http.post(AUTH_API + 'logout', { }, httpOptions);
   }
 }

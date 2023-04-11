@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,7 +35,7 @@ import com.smart.backend.repository.UserRepository;
 import com.smart.backend.security.jwt.JwtUtils;
 import com.smart.backend.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -217,5 +218,12 @@ public class AuthController {
 		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+	
+	@PostMapping("/logout")
+	public ResponseEntity<MessageResponse> logoutUser() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		securityContext.setAuthentication(null);
+		return ResponseEntity.ok(new MessageResponse("logout successful"));
 	}
 }
