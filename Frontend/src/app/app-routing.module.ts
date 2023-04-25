@@ -16,6 +16,7 @@ import { CantacterComponent } from './_pages/board/board-client/cantacter/cantac
 import { ListReclamationsComponent } from './_pages/board/board-client/list-reclamations/list-reclamations.component';
 import { CabinetComponent } from './_pages/board/board-medecin/cabinet/cabinet.component';
 import { ListConseilsComponent } from './_pages/board/board-medecin/list-conseils/list-conseils.component';
+import { ListDiagnosticComponent } from './_pages/board/board-client/list-diagnostic/list-diagnostic.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   // Board patient
   { path: 'advices', component: ListAdvicesComponent },
   { path: 'medecins', component: ListMedecinComponent },
+  { path: 'diagnostic', component: ListDiagnosticComponent },
   { path: 'reclamations', component: ListReclamationsComponent},
   // Board medecin
   { path: 'cabinet', component: CabinetComponent },

@@ -16,7 +16,8 @@ export class ListMedecinComponent implements OnInit{
 
   currentUser: any = null;
   medecins: any = [];
-  cabinet: null = null; 
+  medecinSelect: any = [];
+  cabinet: any = null; 
 
   addressE : string = "";
   specialiteE : string = "Anesthésiologie";
@@ -61,16 +62,17 @@ export class ListMedecinComponent implements OnInit{
     window.location.reload();
   }
 
-  voirCabinet(id: String): void{
-    this.cabinetService.getByMedecin(id)
+  voirCabinet(medecin: any): void{
+    this.medecinSelect = medecin
+
+    this.cabinetService.getByMedecin(medecin.id)
     .subscribe(
       data => {
         this.cabinet = data;
-        this.loading = false;
-        console.log(this.cabinet)
         
       },
       error => {
+        this.cabinet = null;
         console.log(error.message);
       }
     ) 

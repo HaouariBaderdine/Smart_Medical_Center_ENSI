@@ -34,6 +34,7 @@ import { AdviceEtatPipe } from './_pipes/advice/advice-etat.pipe';
 import { SpinnerDirective } from './_shared/spinner.directive';
 import { CabinetComponent } from './_pages/board/board-medecin/cabinet/cabinet.component';
 import { ListConseilsComponent } from './_pages/board/board-medecin/list-conseils/list-conseils.component';
+import { ListDiagnosticComponent } from './_pages/board/board-client/list-diagnostic/list-diagnostic.component';
 
 
 
@@ -66,7 +67,8 @@ import { ListConseilsComponent } from './_pages/board/board-medecin/list-conseil
     AdviceDatePipe,
     AdviceEtatPipe,
     CabinetComponent,
-    ListConseilsComponent
+    ListConseilsComponent,
+    ListDiagnosticComponent
   ],
   imports: [
     BrowserModule,

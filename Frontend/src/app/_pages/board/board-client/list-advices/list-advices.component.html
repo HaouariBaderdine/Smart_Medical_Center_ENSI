@@ -24,6 +24,11 @@
                 </a>
             </li>
             <li>
+                <a href="/diagnostic " [routerLink]="['/diagnostic']" class="nav-link link-body-emphasis">
+                    <span>Demander diagnostic</span>
+                </a>
+            </li>
+            <li>
                 <a href="/reclamations " [routerLink]="['/reclamations']" class="nav-link link-body-emphasis">
                     <span>Donner réclamation</span>
                 </a>
@@ -81,7 +86,7 @@
                                     </blockquote>
                                     <hr/>
                                     <ng-container *ngIf="conseil.etat == 'traité'">
-                                        <button class="btn btn-outline-primary">Consulter réponse</button>
+                                        <button class="btn btn-outline-primary" (click)="voirReponse(conseil.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Consulter réponse</button>
                                     </ng-container>
 
                                     <ng-container *ngIf="conseil.etat != 'traité'">
@@ -105,6 +110,14 @@
                         </div>
                         <div class="card-body">
                             <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" name="form" class="row g-3 needs-validation">
+
+
+                                <div class="col-md-12">
+                                    <label for="sujet " class="form-label ">Medecin à proximiter: *</label>
+                                    <select [(ngModel)]="form.medecin" [ngModelOptions]="{standalone: true}" class="form-control" #form.medecin="ngModel" class="form-control " id="type " name="type ">
+                                    <option [value]="x.id" *ngFor="let x of medecins"><strong> {{x.name}}</strong> (<strong> {{x.specialite}}</strong>)</option>
+                                    </select>
+                                </div>
 
                                 <div class="col-md-12 ">
                                     <label for="sujet " class="form-label ">Sujet: *</label>
@@ -159,3 +172,23 @@
         })
     })()
 </script>
+
+<div class="modal fade modal-lg" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" *ngIf="reponseAdvice != null">
+                    Réponse de conseil <small style="color: grey">, répond le {{reponseAdvice.createdAt | date}} </small>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="reponseAdvice != null">
+                    <p><strong>Etat :</strong>traité</p>
+                    <p><strong>Description :</strong> {{reponseAdvice.description}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,7 +1,5 @@
 package com.smart.backend.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +27,16 @@ public class ReponseAdviceController {
 	ReponseAdviceRepository repository;
 
 	@GetMapping("/reponse/advice/{advice}")
-	public ResponseEntity<List<Reponse_Advice>> getReponse_AdvicesByDemandeur(@PathVariable("advice") String advice) {
+	public ResponseEntity<Reponse_Advice> getReponse_AdvicesByDemandeur(@PathVariable("advice") String advice) {
 		try {
-			List<Reponse_Advice> Reponse_Advices = new ArrayList<Reponse_Advice>();
+			Optional<Reponse_Advice> Reponse_AdviceData = repository.findByAdvice(advice);
 
-			if (advice != null)
-				repository.findByAdvice(advice).forEach(Reponse_Advices::add);
-
-			if (Reponse_Advices.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			if (Reponse_AdviceData.isPresent()) {
+				return new ResponseEntity<>(Reponse_AdviceData.get(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 
-			return new ResponseEntity<>(Reponse_Advices, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

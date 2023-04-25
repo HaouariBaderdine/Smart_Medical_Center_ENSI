@@ -25,6 +25,11 @@
                 </a>
             </li>
             <li>
+                <a href="/diagnostic " [routerLink]="['/diagnostic']" class="nav-link link-body-emphasis">
+                    <span>Demander diagnostic</span>
+                </a>
+            </li>
+            <li>
                 <a href="/reclamations " [routerLink]="['/reclamations']" class="nav-link link-body-emphasis">
                     <span>Donner réclamation</span>
                 </a>
@@ -114,14 +119,12 @@
                                 </ul>
                             </div>
                             <hr/>
-                            <button (click)="voirCabinet(medecin.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-outline-primary">
+                            <button (click)="voirCabinet(medecin)" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-outline-primary">
                                 Consulter cabinet
                             </button>
                         </div>
-
                     </div>
                 </div>
-
             </div>
 
 
@@ -150,10 +153,35 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div>
-
+                <div *ngIf="cabinet  == null">
+                    <p>Aucune information pour le moment sur le cabinet</p>
                 </div>
+                <div *ngIf="cabinet != null">
 
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://www.macsf.fr/var/macsf/storage/images/7/7/3/9/949377-6-fre-FR/Cessation_dactivite_liberale_le_medecin_615x555.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Information de cabinet <strong>{{medecinSelect.name}}</strong> </h5>
+                                    <hr/>
+                                    <p>Adress: <strong>{{cabinet.address}}</strong></p>
+                                    <p>Ouevre à <strong>8H</strong></p>
+                                    <p>Ferme à <strong>17H</strong></p>
+                                    <p>Description <strong>{{cabinet.description}}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="btn-modal">
+                        <a><button class="btn btn-outline-secondary">Envoyer message</button></a>
+                        <a href="advices"><button class="btn btn-outline-warning">Demander conseil</button></a>
+                        <button class="btn btn-outline-primary">Prendre rendez-vous</button>
+                    </div>
+                </div>
             </div>
 
         </div>

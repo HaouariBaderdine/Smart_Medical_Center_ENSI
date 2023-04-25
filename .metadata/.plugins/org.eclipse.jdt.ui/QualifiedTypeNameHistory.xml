@@ -41,11 +41,11 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.smart.backend.models.Reponse_Advice"/>
     <fullyQualifiedTypeName name="com.smart.backend.repository.ReponseAdviceRepository"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContext"/>
     <fullyQualifiedTypeName name="com.smart.backend.repository.UserRepository"/>
     <fullyQualifiedTypeName name="com.smart.backend.models.User"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
 </qualifiedTypeNameHistroy>

@@ -169,3 +169,7 @@ h3 h2 {
 .rating .star.active {
     background-position: 0 -16px;
 }
+
+.btn-modal button {
+    margin-left: 10%;
+}

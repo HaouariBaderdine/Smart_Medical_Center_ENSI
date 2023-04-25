@@ -4300,3 +4300,16 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.smart:Bac
 2023-04-11 11:45:55,727 [Worker-4: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-04-11 11:45:55,728 [Worker-4: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-04-11 11:45:55,728 [Worker-4: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-11 11:47:24,861 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-21 00:59:24,185 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-04-21 13:15:03,402 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-21 17:37:12,918 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-21 17:37:12,973 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-21 17:37:12,977 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-21 17:37:12,997 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-04-21 17:37:13,004 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-04-21 17:37:13,004 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-04-21 17:37:13,004 [Worker-18: Launching Backend - SpringBootMongodbLoginApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mimib\Desktop\IIA2\Semester 2\Java Avancee\Smart medical cabinet\backend\src\test\resources
+2023-04-25 10:56:47,487 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-04-25 13:43:04,616 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-25 13:45:24,428 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

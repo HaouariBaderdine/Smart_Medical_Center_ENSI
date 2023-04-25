@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdviceService } from 'src/app/_services/advice/advice.service';
+import { ReponseService } from 'src/app/_services/advice/reponse.service';
 import { StorageService } from 'src/app/_services/storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-list-advices',
@@ -15,6 +17,10 @@ export class ListAdvicesComponent {
   currentUser: any = null;
 
   conseils:any = [];
+  medecins: any = [];
+  reponseAdvice: any = null;
+
+  addressE: string ="";
 
   form: any = {
     sujet: "",
@@ -24,13 +30,35 @@ export class ListAdvicesComponent {
 
   constructor(
     private adviceService: AdviceService,
+    private reponseService: ReponseService,
+    private userService: UserService,
     private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
-    if(this.currentUser != null)
+    if(this.currentUser != null){
+      this.addressE = "Ariana";
       this.retriveAdvices();
+      this.retriveMedecins();
+    }
+  }
+
+  retriveMedecins(): void {
+    this.userService.getAll()
+    .subscribe(
+      data => {
+        for(let x in data){
+
+          if(data[x].specialite != null && data[x].address == this.addressE){
+            this.medecins.push(data[x])
+          }
+        }
+      },
+      error => {
+        console.log(error.message);
+      }
+    )  
   }
 
   retriveAdvices() {
@@ -62,7 +90,7 @@ export class ListAdvicesComponent {
       createdAt: new Date(),
       description: this.form.description,
       demandeur: this.currentUser.id,
-      medecin: "6430a5ae7ea6241ba23febe8"
+      medecin: this.form.medecin
     };
     
     if(data.type != "" && data.description != ""){
@@ -87,6 +115,17 @@ export class ListAdvicesComponent {
   reloadPage(): void {
     window.location.reload();
     this.newConseil();    
+  }
+
+  voirReponse(id: string): void{
+    this.reponseService.getAllByAdvice(id)
+    .subscribe(
+      data => {
+        this.reponseAdvice = data;
+      },
+      error => {
+        console.log(error.message);
+      });
   }
 
   deleteConseil(id: any): void {

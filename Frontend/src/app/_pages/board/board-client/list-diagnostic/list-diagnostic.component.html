@@ -1,0 +1,86 @@
+<div class="b-example-divider"></div>
+
+<main class="d-flex flex-nowrap">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-5" style="text-align: center;">Tableau de board patient</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/board/patient " [routerLink]="['/board/patient']" class="nav-link link-body-emphasis">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="/medecins " [routerLink]="['/medecins']" class="nav-link link-body-emphasis">
+                    Medecins à approximté
+                </a>
+            </li>
+            <li>
+                <a href="/advices " [routerLink]="['/advices']" class="nav-link link-body-emphasis">
+                    <span>Demander conseil</span>
+                </a>
+            </li>
+            <li>
+                <a href="/diagnostic " [routerLink]="['/diagnostic']" class="nav-link link-body-emphasis" routerLinkActive="router-link-active" class="nav-link active" aria-current="page">
+                    <span>Demander diagnostic</span>
+                </a>
+            </li>
+            <li>
+                <a href="/reclamations " [routerLink]="['/reclamations']" class="nav-link link-body-emphasis">
+                    <span>Donner réclamation</span>
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+
+    <section class="right">
+
+        <ng-container *appSpinner="!loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container class="container" *ngIf="loading">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class=" titre d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="h4 mb-0 text-gray-800">Diagnostic intelligent :</h3>
+                </div>
+                <hr/>
+            </div>
+
+            <div class="container-diagnostic">
+                <p>Entrez vos symptômes :</p>
+                <div>
+                    <input type="text" [(ngModel)]="nouveauSymptome">
+                    <button (click)="ajouterSymptome(nouveauSymptome)">Ajouter</button>
+                </div>
+                <ul>
+                    <li *ngFor="let symptome of symptomes">
+                        {{symptome}}
+                        <button (click)="retirerSymptome(symptome)" class="btn btn-outline-danger">X</button>
+                    </li>
+                </ul>
+                <button [disabled]="symptomes.length == 0" (click)="executerDiagnostic()" class="btn btn-outline-primary">Exécuter le diagnostic</button>
+                <br/>
+                <div *ngIf="diagnostic">
+                    <br/>
+                    <h4>Résultats du diagnostic :</h4>
+                    <hr/>
+                    <p><strong>Maladies possibles : </strong> {{diagnostic}}</p>
+                    <hr/>
+                    <p *ngIf="traitement"><strong>Traitements recommandés : </strong>{{traitements}}</p>
+                </div>
+            </div>
+        </ng-container>
+
+
+    </section>
+</main>

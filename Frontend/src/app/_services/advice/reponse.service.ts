@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/reponse/advice/';
-const API_URL_ID = 'http://localhost:8080/api/reponse/';
+const API_URL = 'http://localhost:8080/api/reponse/advice';
+const API_URL_ID = 'http://localhost:8080/api/reponse';
 const API_URL_LIKE = 'http://localhost:8080/api/advice/like';
 
 @Injectable({
