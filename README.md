@@ -1,5 +1,4 @@
 # Smart_Medical_Center_ENSI
-# ENSI
 
 This project is a demo of a web application (Subject: Smart medical Center)
 that uses:
