@@ -81,6 +81,12 @@ Register Page 'Consulter liste des medecins à proximiter':
 
 ![alt text](Images/9.png)
 
+Register Page 'Diagnostic':
+
+![alt text](Images/10.png)
+
+![alt text](Images/11.png)
+
 #Usage
 To use the application, navigate to http://localhost:4200 in your web browser. You'll be presented with a list of customers. You can view a customer's details by clicking on their name, or you can create a new customer by clicking the "Create New Customer" button.
 
