@@ -53,6 +53,10 @@ This will start the Spring Boot server and the application will be accessible at
 
 Base deployer dans un cluster using MONGO DB ATLAS
 
+#INTERFACES
+
+![alt text](Images/1.png)
+
 #Usage
 To use the application, navigate to http://localhost:4200 in your web browser. You'll be presented with a list of customers. You can view a customer's details by clicking on their name, or you can create a new customer by clicking the "Create New Customer" button.
 
