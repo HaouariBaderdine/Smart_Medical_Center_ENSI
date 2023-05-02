@@ -27,6 +27,8 @@ export class ListDiagnosticComponent {
 
   nouveauSymptome: string ="";
 
+  listSymptomes : string[] = ["douleur en avalant", "gorge irritée","fièvre","fatigue","maux de tête","toux"]
+
   ajouterSymptome(symptome: string) {
     if (!this.symptomes.includes(symptome)) {
       this.symptomes.push(symptome);

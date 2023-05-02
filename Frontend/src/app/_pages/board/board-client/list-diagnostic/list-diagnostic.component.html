@@ -59,7 +59,16 @@
             <div class="container-diagnostic">
                 <p>Entrez vos symptômes :</p>
                 <div>
-                    <input type="text" [(ngModel)]="nouveauSymptome">
+                    <!--<input type="text" [(ngModel)]="nouveauSymptome">-->
+                    <div class="haut col-md-3">
+                        <div class="input-group mb-4">
+                            <select class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="nouveauSymptome" list="datalistOptions1" id="SearchProvince">
+                                <option [value]="a" *ngFor="let a of listSymptomes">
+                                    {{a}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
                     <button (click)="ajouterSymptome(nouveauSymptome)">Ajouter</button>
                 </div>
                 <ul>
